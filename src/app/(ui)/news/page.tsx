@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Avatar,
   Box,
@@ -9,11 +11,10 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import FetchNew from "../../../../hooks/fetchNews";
+import { useState } from "react";
 
 export default async function page() {
   const data = await FetchNew();
-  console.log(data);
-  
 
   return (
     <div className="px-4 lg:px-8 mx-auto max-w-7xl">
@@ -125,7 +126,9 @@ export default async function page() {
                     <p className="text-sm">{item.title.slice(0, 65)} ...</p>
                   </SkeletonText>
                   <Skeleton height="16px" mt="4px" isLoaded>
-                    <p className="text-xs text-primary mt-2">{item.source.name}</p>
+                    <p className="text-xs text-primary mt-2">
+                      {item.source.name}
+                    </p>
                   </Skeleton>
                 </Link>
               </div>
